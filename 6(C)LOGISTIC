@@ -1,0 +1,12 @@
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn import metrics
+X = np.array([3.78, 2.44, 2.09, 0.14, 1.72, 1.65, 4.92, 4.37, 4.96, 4.52, 3.69, 5.88]).reshape(-1,1)
+y = np.array([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1])
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
+y_pred = logreg.predict(X_test)
+print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(logreg.score(X_test, y_test)))
